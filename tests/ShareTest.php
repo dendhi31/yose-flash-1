@@ -7,26 +7,42 @@ class ShareTest extends TestCase
      *
      * @return void
      */
-    public function testRepoLink()
+    public function testLinkId()
     {
         $this->visit('/')
              ->see('<a id="repository-link"');
-             // ->seePageIs('/readme');
     }
 
-	/**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testReadmePage()
+    public function testTarget()
     {
-        $this->visit('/readme')
-             ->see('id="readme"')
-             ->see('YoseTheGame');
+        $this->visit('/')
+             ->see('href="readme"');
+    }
+
+    public function testLinkTarget()
+    {
+
+        $this->visit('/')
+             ->see('<a id="repository-link"')
+             ->see('href="readme"');
     }    
 
+    public function testIdReadme()
+    {
+        $this->visit('/readme')
+              ->see('id="readme"');
+    }
 
+    public function testCheckText()
+    {
+        $this->visit('/readme')
+                ->see('YoseTheGame');
+    }
 
-    
+    public function testReadmeUrl()
+    {
+        $this->visit('/readme')
+                ->see('id="readme"')
+                ->see('YoseTheGame');
+    }    
 }
